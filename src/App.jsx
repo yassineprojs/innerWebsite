@@ -6,16 +6,17 @@ function App() {
   const [open, setOpen] = useState(false);
   const [passwordValidation, setPasswordValidation] = useState(false);
 
+  const handleValidation = (isValid) => {
+    setPasswordValidation(isValid);
+  };
+
   return (
     <>
       <div className="App">
-        {!passwordValidation && ( // Render these components only if passwordValidation is false
+        {!passwordValidation && (
           <>
             <OpenSequence setOpen={setOpen} />
-            <LoginPassword
-              open={open}
-              onValidation={() => setPasswordValidation(true)}
-            />
+            <LoginPassword open={open} onValidation={handleValidation} />
           </>
         )}
         {passwordValidation && <Ceaser />}
@@ -25,11 +26,3 @@ function App() {
 }
 
 export default App;
-
-// const handlePasswordValidation = (isValid) => {
-//   if (isValid) {
-//     console.log("Access granted");
-//   } else {
-//     console.log("Access denied");
-//   }
-// };
