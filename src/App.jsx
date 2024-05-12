@@ -6,21 +6,20 @@ function App() {
   const [open, setOpen] = useState(false);
   const [passwordValidation, setPasswordValidation] = useState(false);
 
-  const handleValidation = (isValid) => {
-    setPasswordValidation(isValid);
-  };
-
   return (
     <>
       <div className="App">
         {!passwordValidation && (
           <>
             <OpenSequence setOpen={setOpen} />
-            <LoginPassword open={open} onValidation={handleValidation} />
+            <LoginPassword
+              open={open}
+              onValidation={() => setPasswordValidation(true)}
+            />
           </>
         )}
-        {passwordValidation && <Ceaser />}
       </div>
+      {passwordValidation && <Ceaser />}
     </>
   );
 }
