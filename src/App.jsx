@@ -18,8 +18,8 @@ function App() {
             />
           </>
         )}
+        {passwordValidation && <Ceaser />}
       </div>
-      {passwordValidation && <Ceaser />}
     </>
   );
 }
